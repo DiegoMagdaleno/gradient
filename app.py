@@ -35,9 +35,9 @@ st.markdown("""
         background-size: 30px 30px;
     }
     
-    /* Ensure content stays centered and doesn't overlap with sidebar */
+    /* Perfect Centering Logic */
     .block-container {
-        max-width: 1200px !important;
+        max-width: 1100px !important;
         padding-top: 3rem !important;
         padding-bottom: 5rem !important;
         margin-left: auto !important;
@@ -48,26 +48,10 @@ st.markdown("""
     footer {visibility: hidden;}
     header {background: transparent !important;}
 
-    /* Sidebar: Clean contrast + WIDER BY DEFAULT ON DESKTOP */
+    /* Sidebar: High Contrast Styling */
     [data-testid="stSidebar"] {
         background-color: #ffffff !important;
         border-right: 2px solid #000000;
-    }
-    
-    @media (min-width: 768px) {
-        /* Set custom width */
-        [data-testid="stSidebar"] {
-            min-width: 480px !important;
-            max-width: 480px !important;
-        }
-        /* IMPORTANT: Shift the main content so it doesn't overlap the fixed sidebar */
-        [data-testid="stSidebarCollapsedControl"] ~ section.main {
-            margin-left: 480px !important;
-        }
-        /* If sidebar is collapsed, margin should go back to 0 */
-        [data-testid="stSidebar"][aria-expanded="false"] ~ section.main {
-            margin-left: 0 !important;
-        }
     }
     
     /* Responsive Sidebar Content */
