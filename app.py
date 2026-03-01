@@ -35,12 +35,13 @@ st.markdown("""
         background-size: 30px 30px;
     }
     
-    /* Ensure content stays centered when sidebar is collapsed */
+    /* Ensure content stays centered and doesn't overlap with sidebar */
     .block-container {
         max-width: 1200px !important;
+        padding-top: 3rem !important;
+        padding-bottom: 5rem !important;
         margin-left: auto !important;
         margin-right: auto !important;
-        padding-top: 3rem !important;
     }
 
     #MainMenu {visibility: hidden;}
@@ -54,9 +55,18 @@ st.markdown("""
     }
     
     @media (min-width: 768px) {
+        /* Set custom width */
         [data-testid="stSidebar"] {
             min-width: 480px !important;
             max-width: 480px !important;
+        }
+        /* IMPORTANT: Shift the main content so it doesn't overlap the fixed sidebar */
+        [data-testid="stSidebarCollapsedControl"] ~ section.main {
+            margin-left: 480px !important;
+        }
+        /* If sidebar is collapsed, margin should go back to 0 */
+        [data-testid="stSidebar"][aria-expanded="false"] ~ section.main {
+            margin-left: 0 !important;
         }
     }
     
